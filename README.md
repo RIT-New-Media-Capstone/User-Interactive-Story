@@ -1,2 +1,2 @@
-# User-Interactive-Story
+# User Interactive Story
 Team - Max, Phil, and Hugo
