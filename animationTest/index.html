@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        #storytime{
+            position: relative;
+            /* display: none; */
+        }
+        #book{
+            container-name: book;
+        }
+        #alpha{
+            opacity: 1;
+            transition: opacity 0.2s;
+            position: absolute;
+            top: 15%;
+            left: 17%;
+        }
+        #story{
+            width: 32.5vw;
+            font-size: 200%;
+        }
+/* 
+        @container book (min-width: 700px) {
+            #story{
+                width: 25vw;
+                font-size: 100%;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div id="storytime">
+        <img src="book-77.png" alt="" style="width: 100%" id="book", onclick="redirect()">
+        <div id="alpha">
+            <h1 id="story">Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text.</h1>
+            <h1 id="story">What will you do?</h1>
+
+            <option-button text="Go to the river"></option>
+        </div>
+    </div>
+
+
+
+    <!-- If all of the story and choices are just text and images, I can literally just put them in a div and set that div an opacity that it can transition to -->
+
+    <script type="text/javascript">
+        
+        let turn = false; //This is to make sure the player doesn't spam it and the pages don't start from the beginning too quickly and break the illusion
+        function redirect() 
+        {   if(!turn)
+            {
+                const pageTurn = document.getElementById("book");
+                if(document.body.clientWidth/2 >= event.clientX)
+                    pageTurn.src = "book-78.gif"; //Turn left
+                else
+                    pageTurn.src = "book-77.gif"; //Turn right
+                turn = true;
+                document.getElementById("alpha").style.opacity = 0;
+                window.setTimeout(function() {
+                    turn = false;
+                    pageTurn.src = "book-77.png"; //Revert to idle once finished
+                    document.getElementById("alpha").style.opacity = 1;
+                }, 700);  
+            }
+        } 
+        </script>
+
+    <script type="module" src="option.js"></script>
+</body>
+</html>
