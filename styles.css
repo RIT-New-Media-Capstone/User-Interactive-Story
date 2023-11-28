@@ -19,7 +19,10 @@
 }
 
 #dalle{
-    width: 32.5vw;
+    width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 #left{
