@@ -46,45 +46,26 @@ class ChoiceButton extends HTMLElement{
         this.shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.p = this.shadowRoot.querySelector("p");
-        // this.callbackFunction = null;
     }
 
     connectedCallback()
     {
         this.render();
-        // this.shadowRoot.querySelector('div').addEventListener('click',this.handler);
     }
 
-    handler() {
-        console.log("this is the test");
-        console.log('test action');
-    }
 
     attributeChangedCallback(attributeName, oldVal, newVal){
-        // console.log(attributeName, oldVal, newVal);
         this.render();
     }
 
     static get observedAttributes(){
-        return ["text","callback"];
+        return ["text"];
     }
 
     render(){
         const text = this.getAttribute('text') ? this.getAttribute('text') : "null";
-        const callback = this.getAttribute('callback') ? this.getAttribute('callback') : null;
-        
         this.p.innerHTML = text;
-        // this.callbackFunction = callback;
-        // addFunction(this, callback);
     }
 }
 
 customElements.define('option-button', ChoiceButton);
-
-function addFunction(elem, callback)
-{
-    const shadow = elem.shadowRoot;
-    const childNodes = Array.from(shadow.childNodes);
-    // shadow.querySelector('div').addEventListener('click', callback);
-    console.log(callback);
-}
