@@ -11,10 +11,15 @@
     position: absolute;
     top: 15%;
     left: 17%;
+    display: flex;
 }
 #story{
     width: 32.5vw;
     font-size: 200%;
+}
+
+#right{
+    padding: 20px;
 }
 
 p {
