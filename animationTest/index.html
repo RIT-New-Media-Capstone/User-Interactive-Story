@@ -51,7 +51,8 @@
         
         let turn = false; //This is to make sure the player doesn't spam it and the pages don't start from the beginning too quickly and break the illusion
         function redirect() 
-        {   if(!turn)
+        {   
+            if(!turn)
             {
                 const pageTurn = document.getElementById("book");
                 if(document.body.clientWidth/2 >= event.clientX)
@@ -67,7 +68,7 @@
                 }, 700);  
             }
         } 
-        </script>
+    </script>
 
     <script type="module" src="option.js"></script>
 </body>

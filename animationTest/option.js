@@ -32,7 +32,7 @@ p{
 
 <div>
 <p></p>
-<img src="choice.png" alt="choose">
+<img src="animationTest/choice.png" alt="choose">
 </div>
 
 `;

@@ -1,4 +1,21 @@
-
+#storytime{
+    position: relative;
+    /* display: none; */
+}
+#book{
+    container-name: book;
+}
+#alpha{
+    opacity: 1;
+    transition: opacity 0.2s;
+    position: absolute;
+    top: 15%;
+    left: 17%;
+}
+#story{
+    width: 32.5vw;
+    font-size: 200%;
+}
 
 p {
     justify-content: center;
