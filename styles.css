@@ -10,16 +10,23 @@
     transition: opacity 0.2s;
     position: absolute;
     top: 15%;
-    left: 17%;
+    left: 16%;
     display: flex;
 }
 #story{
     width: 32.5vw;
-    font-size: 200%;
+    font-size: 150%;
 }
 
+#dalle{
+    width: 32.5vw;
+}
+
+#left{
+    margin-right: 20px;
+}
 #right{
-    padding: 20px;
+    margin-left: 20px;
 }
 
 p {
