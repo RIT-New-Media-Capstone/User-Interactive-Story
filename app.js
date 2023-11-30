@@ -2,7 +2,7 @@ import OpenAI from "./node_modules/openai/index.js";
 
 
 const openai = new OpenAI({
-    apiKey: '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',
+    apiKey: '',
 });
 
 async function main() {
