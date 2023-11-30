@@ -4,12 +4,14 @@ const openai = new OpenAI({
     apiKey: '',
 });
 
+
+
 const initialConversation = [
   {
     role: 'system', content: 'You are an interested adversary who makes it rain around themself by existing.'
   },
   {role: 'user', content: 'tell me a 30 word starting point in a dungeon adventure.'},
-  {role: 'assistant', content: 'tell me those 30 words as though I am a lucrative dwarf with a battle axe.'}
+  {role: 'assistant', content: 'tell me those 50 words as though I am a lucrative dwarf with a battle axe.'}
 ]; 
 
 async function getOpenAIResponse(conversation){
@@ -17,7 +19,7 @@ async function getOpenAIResponse(conversation){
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: conversation,
-      temperature: 0.8,
+      temperature: 1.4,
     });
 
     return response.choices[0].message.content;
@@ -28,13 +30,21 @@ async function getOpenAIResponse(conversation){
 }
 
 async function main(){
+
   let conversation = initialConversation;
 
   for(let i = 0; i < 9; ++i){
     const response = await getOpenAIResponse(conversation);
+    const userPrompts = [
+     // `Tell me more about ${response.split('.')[0]}`,
+      'Let the dawrf pick up an item and think about the possibility of such item.',
+      `Add an event that the dwarf did to continue from ${response.split('.')[0]}.`,
+      `Let the dwarf converse briefly with a hitman who has a dull sword.`,
+    ];
     console.log(response + '\n'); //`Response ${i+1}:`, 
-
-    conversation.push({role: 'user', content: `Please continue the story about the dwarf in 20 words`});
+    const randomUserPrompts = userPrompts[Math.floor(Math.random() * userPrompts.length)]
+   // conversation.push({role: 'user', content: `Please continue the story about ${response.split('.')[2]} in 20 words`});
+   conversation.push({role: 'user', content: randomUserPrompts});
     conversation.push({role: 'assistant', content: response});
 
     // if(conversation.length > 10){
