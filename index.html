@@ -5,8 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>User Interactive Story</title>
+    <script type="module" src="main,.js"></script>
+    <script type="module" src="animationTest/option.js"></script>
 </head>
-<body>
-    <p>Hello there. Test</p>
+    <p>Hello there.</p> 
+    <div id="storytime">
+        <img src="animationTest/book-77.png" alt="" style="width: 100%" id="book", onclick="redirect()">
+        <div id="alpha">
+            <div id="left">
+                <p id="story">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente totam, eius laboriosam quia illum ab ut cumque, quod consequuntur, inventore quibusdam vel iusto repellendus eligendi dicta aperiam asperiores ducimus iste! Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit repudiandae suscipit ipsa ab officiis debitis possimus, incidunt hic voluptatibus dolorem quae magnam similique iure amet ipsum odio quod consequuntur? Aspernatur?</p>
+                <img src="animationTest/book-77.png" alt="image" width="500px" id="dalle">
+            </div>
+            <div id="right">
+                <option-button text="Go to the river" onclick="redirect()"></option-button>
+                <option-button text="Turn Back" onclick="redirect()"></option-button>
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+        let turn = false; //This is to make sure the player doesn't spam it and the pages don't start from the beginning too quickly and break the illusion
+        function redirect() 
+        {   
+            if(!turn)
+            {
+                const pageTurn = document.getElementById("book");
+                if(document.body.clientWidth/2 >= event.clientX)
+                    pageTurn.src = "animationTest/book-78.gif"; //Turn left
+                else
+                    pageTurn.src = "animationTest/book-77.gif"; //Turn right
+                turn = true;
+                document.getElementById("alpha").style.opacity = 0;
+                window.setTimeout(function() {
+                    turn = false;
+                    pageTurn.src = "animationTest/book-77.png"; //Revert to idle once finished
+                    document.getElementById("alpha").style.opacity = 1;
+                }, 700);  
+            }
+        } 
+    </script>
 </body>
 </html>
