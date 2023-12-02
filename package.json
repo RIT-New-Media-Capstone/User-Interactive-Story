@@ -1,5 +1,5 @@
 {
-  "type": "module",
+  "type":"module",
   "name": "user-interactive-story",
   "version": "1.0.0",
   "description": "Project: User Interactive Story\r Team: Max, Phil and Hugo",
@@ -13,5 +13,8 @@
   "dependencies": {
     "node-fetch": "^2.7.0",
     "openai": "^4.20.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0"
   }
 }
