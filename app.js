@@ -1,15 +1,29 @@
-import OpenAI from "./node_modules/openai/index.js";
+//import OpenAI from "./node_modules/openai/index.js";
+import OpenAI from 'openai';
+
+//const OpenAI = require('openai');
 
 const openai = new OpenAI({
-    apiKey: '',
+    apiKey: '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',
+    //apiKey: process.env.OPENAI_API_KEY,
 });
 
 
 
+//  document.getElementById("generateStory").addEventListener("click", () => {
+// //   //main();
+//   console.log("hello world");
+// })
+
+// function generateStory(){
+//  // let generateStoryTest = document.querySelector(".generate-story");
+
+//   main();
+// }
+
+
 const initialConversation = [
-  {
-    role: 'system', content: 'You are an interested adversary who makes it rain around themself by existing.'
-  },
+  {role: 'system', content: 'You are an interested adversary who makes it rain around themself by existing.'},
   {role: 'user', content: 'tell me a 30 word starting point in a dungeon adventure.'},
   {role: 'assistant', content: 'tell me those 50 words as though I am a lucrative dwarf with a battle axe.'}
 ]; 
@@ -33,13 +47,13 @@ async function main(){
 
   let conversation = initialConversation;
 
-  for(let i = 0; i < 9; ++i){
+  for(let i = 0; i < 5; ++i){
     const response = await getOpenAIResponse(conversation);
     const userPrompts = [
      // `Tell me more about ${response.split('.')[0]}`,
-      'Let the dawrf pick up an item and think about the possibility of such item.',
-      `Add an event that the dwarf did to continue from ${response.split('.')[0]}.`,
-      `Let the dwarf converse briefly with a hitman who has a dull sword.`,
+      'Without repeating a previous prompt, write something about the dawrf picking up an item and thinking about the possibility existence.',
+      `Without repeating a previous prompt, write an event about the dwarf to continue the story from ${response.split('.')[0]}.`,
+      `Without repeating a previous prompt, write about the dwarf conversing briefly with an adversary who has a dull sword.`,
     ];
     console.log(response + '\n'); //`Response ${i+1}:`, 
     const randomUserPrompts = userPrompts[Math.floor(Math.random() * userPrompts.length)]
@@ -54,33 +68,6 @@ async function main(){
 }
 
 
-// async function getOpenAIResponse(){
-//   try{
-//     const response = await openai.chat.completions.create({
-//       model: 'gpt-3.5-turbo',
-//       messages: [{
-//         role: 'system', content: 'You are a hitman who makes it rain around themself by existing.'
-//       },
-//       {role: 'user', content: 'tell me a 30 token starting point in a dungeon adventure.'},
-//       {role: 'assistant', content: 'tell me those 30 words as though I am an angry dwarf with a battle axe.'}],
-//     });
-//     return response.choices[0].message;
-//   }catch(error){
-//     console.error('Error Making API Request:', error.response ? error.response.data : error.message);
-//     throw error;
-//   }
-// }
-
-
-// async function main(){
-//   const openAIResponse = await getOpenAIResponse();
-//   //console.log('OpenAI Response:', openAIResponse);
-//  // console.log('content:', openAIResponse.content);
-
-//   let contentResponse = openAIResponse.content;
-//   console.log(contentResponse);
-
-// }
-
-
 main();
+
+//generateStory();
