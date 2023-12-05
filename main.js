@@ -20,7 +20,7 @@ const generateStory = async (messages, temperature) => {
             "temperature": temperature,
         }),
     };
-
+    document.getElementById("alpha").style.opacity = 1;
     try{
         const response = await fetch(apiUrl, requestData);
         const data = await response.json();
@@ -45,7 +45,6 @@ document.getElementById("generateStory").addEventListener("click", async () => {
 
         const generatedContent = await generateStory(conversation, 1.2);
         storyOutput.textContent += generatedContent + "\n\n";
-        document.getElementById("alpha").style.opacity = 1;
     }
 });
 
