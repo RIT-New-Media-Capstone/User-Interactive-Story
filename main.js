@@ -32,7 +32,10 @@ const generateStory = async (messages, temperature) => {
     }
 };
 
+document.getElementById("alpha").style.opacity = 0;
+
 document.getElementById("generateStory").addEventListener("click", async () => {
+    document.getElementById("alpha").style.opacity = 0;
     const storyOutput = document.getElementById("storyOutput");
 
     let conversation = initialConversation;
@@ -42,6 +45,7 @@ document.getElementById("generateStory").addEventListener("click", async () => {
 
         const generatedContent = await generateStory(conversation, 1.2);
         storyOutput.textContent += generatedContent + "\n\n";
+        document.getElementById("alpha").style.opacity = 1;
     }
 });
 
