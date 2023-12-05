@@ -1,4 +1,4 @@
-const OPENAI_API_KEY = '';
+const OPENAI_API_KEY = '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';
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
 const initialConversation = [
@@ -20,12 +20,13 @@ const generateStory = async (messages, temperature) => {
             "temperature": temperature,
         }),
     };
-    document.getElementById("alpha").style.opacity = 1;
+    
     try{
         const response = await fetch(apiUrl, requestData);
         const data = await response.json();
         const generatedContent = data.choices[0].message.content;
         console.log(generatedContent);
+        document.getElementById("alpha").style.opacity = 1;
         return generatedContent;
     }catch(error){
         console.error("Error", error);
