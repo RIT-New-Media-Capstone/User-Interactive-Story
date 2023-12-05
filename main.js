@@ -1,11 +1,11 @@
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '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';
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
 const initialConversation = [
   {role: 'system', content: 'You are an interested adversary who makes it rain around themself by existing.'},
   {role: 'user', content: 'tell me a 30 word starting point in a dungeon adventure.'},
   {role: 'assistant', content: 'tell me those 50 words as though I am a lucrative dwarf with a battle axe.'}
-]; 
+];
 
 const generateStory = async (messages, temperature) => {
     const requestData = {
@@ -40,7 +40,51 @@ document.getElementById("generateStory").addEventListener("click", async () => {
         const userMessage = "What happened next?";
         conversation.push({"role": "user", "content": userMessage});
 
-        const generatedContent = await generateStory(conversation, 0.8);
+        const generatedContent = await generateStory(conversation, 1.2);
         storyOutput.textContent += generatedContent + "\n\n";
     }
 });
+
+document.getElementById("river").addEventListener("click", async() => {
+    const storyOutput = document.getElementById("storyOutput");
+
+    const buttonText = document.getElementById("river");
+    buttonText.innerHTML = "river";
+    const riverText = buttonText.innerHTML = "river";
+    buttonText.outerHTML = "<option-button id='field' text='Go to field' onclick='redirect()'></option-button>"
+   // const fieldText = buttonText.innerHTML = "field";
+   // console.log(buttonText.outerHTML);
+  //  const buttonTextTwo = document.getElementById("field");
+   // console.log(buttonTextTwo.outerHTML);
+    
+    let conversation = initialConversation;
+    const userMessage = `What happened next after the ${riverText} while including the word ${riverText}`;
+    conversation.push({"role": "user", "content": userMessage});
+    storyOutput.innerHTML = '';
+    const generatedContentTest = await generateStory(conversation, 1.2);
+    storyOutput.textContent += generatedContentTest + "\n\n";
+
+
+    document.getElementById("field").addEventListener("click", async() => {
+        const storyOutput = document.getElementById("storyOutput");
+    
+        // const buttonText = document.getElementById("river");
+        // buttonText.innerHTML = "river";
+        // const riverText = buttonText.innerHTML = "river";
+        // buttonText.outerHTML = "<option-button id='field' text='Go to field' onclick='redirect()'></option-button>"
+        const fieldText = buttonText.innerHTML = "field";
+       // console.log(buttonText.outerHTML);
+        const buttonTextTwo = document.getElementById("field");
+      //  console.log(buttonTextTwo.outerHTML);
+        
+        let conversation = initialConversation;
+        const userMessage = `What happened next after the ${riverText} while including the word ${fieldText}`;
+        conversation.push({"role": "user", "content": userMessage});
+        storyOutput.innerHTML = '';
+        const generatedContentTest = await generateStory(conversation, 1.2);
+        storyOutput.textContent += generatedContentTest + "\n\n";
+    
+    });
+});
+
+
