@@ -20,14 +20,16 @@ const generateStory = async (messages, temperature) => {
             "temperature": temperature,
         }),
     };
-    document.getElementById("alpha").style.opacity = 1;
+    
     try{
         const response = await fetch(apiUrl, requestData);
         const data = await response.json();
         const generatedContent = data.choices[0].message.content;
         console.log(generatedContent);
+        document.getElementById("alpha").style.opacity = 1;
         return generatedContent;
     }catch(error){
+        document.getElementById("alpha").style.opacity = 1;
         console.error("Error", error);
     }
 };
