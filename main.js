@@ -29,6 +29,7 @@ const generateStory = async (messages, temperature) => {
         document.getElementById("alpha").style.opacity = 1;
         return generatedContent;
     }catch(error){
+        document.getElementById("alpha").style.opacity = 1;
         console.error("Error", error);
     }
 };
